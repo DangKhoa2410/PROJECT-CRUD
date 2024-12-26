@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "email": "cuong@gmail.com",
+      "password": "$2a$10$3yyig8Kxq0HhTFKwWp3DRum5LcGyAb/qWUvOl5n7y26A/gRJL.Nhm",
+      "firstName": "cuong",
+      "lastName": "phan",
+      "id": 1
+    },
+    {
+      "email": "khoa@gmail.com",
+      "password": "$2a$10$HBbP050sqVwOgTlAYVRfgekL7oAU1bVLPr3nD4bb1VMIRVBjll7Y6",
+      "firstName": "khoa",
+      "lastName": "nguyen",
+      "id": 2
+    }
+  ],
+  "listUsers": [
+    {
+      "name": "Dang Khoa",
+      "email": "dangkhoa@gmail.com",
+      "phone": "0788515490",
+      "date": "08-Dec, 2021"
+    }
+  ]
+}
