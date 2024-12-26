@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import Form from "../../components/Form";
-
-
+import { IRegisForm } from "../../interfaces/form";
+import { useNavigate } from 'react-router-dom';
+import { postData } from "../../script/services/authApi";
+import { useState } from "react";
 const RegisForm = () => {
+  const navigate = useNavigate();
+
+  const [error, setError] = useState('')
+  const handleRegister = async (data: IRegisForm) => {
+    try {
+      await postData(`/register`, data);
+      navigate('/');
+    } catch (e) {
+      setError((e as Error).message)
+    }
+  };
+
+  const registerFields = ['firstName', 'lastName', 'email', 'password'];
+
   return (
     <div className="bg-custom-gradient flex items-center justify-center h-screen">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl ">
@@ -15,7 +31,7 @@ const RegisForm = () => {
           <p className="mt-2 text-center text-gray">Enter your details to create a new account</p>
         </div>
 
-        <Form />
+        <Form error={error} fields={registerFields} onSubmit={handleRegister} />
 
         <div className="text-center">
           <Link to='/'>Already have an account</Link>
