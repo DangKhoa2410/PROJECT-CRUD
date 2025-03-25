@@ -1,7 +1,8 @@
 import Thead, { TheadProps } from "./Thead";
-import Tbody, { TbodyRow } from "./Tbody";
+import Tbody from "./Tbody";
+import { ListUserProps } from "../../interfaces/listUsers";
 
-const TableComponent = () => {
+const TableComponent = ({rows, onEdit, onClickRemove}: ListUserProps) => {
   const headers: TheadProps[] = [
     { value: "Name" },
     { value: "Email" },
@@ -10,32 +11,11 @@ const TableComponent = () => {
     { value: "Actions" },
   ];
 
-  const rows: TbodyRow[] = [
-    {
-      name: "karthi",
-      email: "karthi@gmmail.com",
-      phone: "7305477760",
-      date: "08-Dec, 2021",
-    },
-    {
-      name: "karthi",
-      email: "karthi@gmmail.com",
-      phone: "7305477760",
-      date: "08-Dec, 2021",
-    },
-    {
-      name: "karthi",
-      email: "karthi@gmmail.com",
-      phone: "7305477760",
-      date: "08-Dec, 2021",
-    },  
-  ];
-
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full border-collapse text-left">
         <Thead value={headers} />
-        <Tbody rows={rows} />
+        <Tbody onClickRemove={onClickRemove} onEdit={onEdit} rows={rows} />
       </table>
     </div>
   );
