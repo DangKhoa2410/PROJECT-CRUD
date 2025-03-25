@@ -10,10 +10,11 @@ const RegisForm = () => {
   const [error, setError] = useState('')
   const handleRegister = async (data: IRegisForm) => {
     try {
-      await postData(`/register`, data);
+      const newUser = { ...data, role: "user" }; 
+      await postData(`/register`, newUser);
       navigate('/');
     } catch (e) {
-      setError((e as Error).message)
+      setError((e as Error).message);
     }
   };
 

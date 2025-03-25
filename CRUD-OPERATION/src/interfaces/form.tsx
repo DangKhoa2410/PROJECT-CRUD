@@ -8,6 +8,7 @@ export interface IRegisForm {
   lastName: string;
   email: string;
   password: string;
+  role?: "admin" | "user";
 }
 
 export interface ApiError {

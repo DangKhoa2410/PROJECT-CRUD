@@ -1,5 +1,5 @@
 import { IRegisForm, ILoginForm } from "../../interfaces/form";
-import { baseUrl } from "../constants/url";
+import { baseUrl, urlListUsers } from "../constants/url";
 import axios, {AxiosError} from 'axios'
 const customAxios = (baseUrl: string) => {
   const api = axios.create({
@@ -39,6 +39,10 @@ export const getData = async (url: string) => {
 }
 
 export const postData = async (url: string, data: IRegisForm | ILoginForm) => {
-   await apiProduct.post(url, data)
+  const response = await apiProduct.post(url, data);
+  return response.data; 
 };
 
+export const deleteData = async (id: string) => {
+  return await axios.delete(`${urlListUsers}/${id}`)
+}

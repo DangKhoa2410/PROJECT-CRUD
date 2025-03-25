@@ -1,26 +1,29 @@
 {
   "users": [
     {
-      "email": "cuong@gmail.com",
-      "password": "$2a$10$3yyig8Kxq0HhTFKwWp3DRum5LcGyAb/qWUvOl5n7y26A/gRJL.Nhm",
-      "firstName": "cuong",
-      "lastName": "phan",
+      "email": "khoa98921@donga.edu.vn",
+      "password": "$2a$10$su6pN1ZxNX/f8Emtucf7pOOyFA9uBPdgX09PCATfkyOo.K5KhGDU6",
+      "firstName": "Dang Khoa",
+      "lastName": "Nguyen",
+      "role": "admin",
       "id": 1
     },
     {
-      "email": "khoa@gmail.com",
-      "password": "$2a$10$HBbP050sqVwOgTlAYVRfgekL7oAU1bVLPr3nD4bb1VMIRVBjll7Y6",
-      "firstName": "khoa",
-      "lastName": "nguyen",
+      "email": "cuong@gmail.com",
+      "password": "$2a$10$0c/WdSErxEn4lAt5FqVn8eT8KOvoOZ31k9ClcpAr4ifGIiB9G7ZTy",
+      "firstName": "cuong",
+      "lastName": "phan",
+      "role": "user",
       "id": 2
     }
   ],
   "listUsers": [
     {
-      "name": "Dang Khoa",
-      "email": "dangkhoa@gmail.com",
+      "nameUser": "Dang Khoa Nguyen",
+      "email": "khoa98921@donga.edu.vn",
       "phone": "0788515490",
-      "date": "08-Dec, 2021"
+      "date": "2025-03-13",
+      "id": 1
     }
   ]
 }

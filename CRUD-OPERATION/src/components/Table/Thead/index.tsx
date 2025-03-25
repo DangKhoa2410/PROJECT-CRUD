@@ -4,6 +4,7 @@ export interface TheadProps {
 
 export interface Theads {
   value: TheadProps[];
+  
 }
 
 const Thead = ({ value }: Theads) => {
