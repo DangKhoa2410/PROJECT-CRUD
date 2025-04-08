@@ -4,6 +4,7 @@ import LoginForm from './pages/loginPage'
 import { Route ,Routes } from "react-router-dom";
 import HomePage from './pages/homePage/index';
 import AdminPage from './pages/admin/AdminPage';
+import RegisterSchedulePage  from './pages/registerSchedulePage';
 const App = () => {
   return (
   <>
@@ -11,7 +12,9 @@ const App = () => {
       <Route index path="/" element={<LoginForm/>} />
       <Route path="/Register" element={<RegisForm/>} />
       <Route path="/HomePage" element={<HomePage/>} />
-      <Route path="/admin" element={<AdminPage />} /> {/* Route cho Admin */}
+      <Route path="/Register-schedule" element={<RegisterSchedulePage  />} /> 
+      <Route path="/admin" element={<AdminPage />} /> 
+
     </Routes>
   </> 
   )
