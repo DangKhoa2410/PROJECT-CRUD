@@ -13,6 +13,7 @@ export default {
     },
     colors: {
       'blue': '#1fb6ff',
+      'blue-white': '#e2ecf5',
       'pink': '#ff49db',
       'orange': '#ff7849',
       'green': '#13ce66',

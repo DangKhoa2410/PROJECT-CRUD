@@ -39,10 +39,12 @@ export const getData = async (url: string) => {
 }
 
 export const postData = async (url: string, data: IRegisForm | ILoginForm) => {
-  const response = await apiProduct.post(url, data);
-  return response.data; 
+  const response = await apiProduct.post(url, data); 
+  return response.data;
 };
 
+
 export const deleteData = async (id: string) => {
-  return await axios.delete(`${urlListUsers}/${id}`)
-}
+  return await apiProduct.delete(`${urlListUsers}/${id}`);
+};
+

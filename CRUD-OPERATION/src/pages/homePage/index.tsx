@@ -9,17 +9,24 @@ const HomePage = () => {
     navigate('/')
   }
 
+  const fullName = localStorage.getItem("fullName") || "";
+  const role = localStorage.getItem("role");
+  
+  const headData = [
+    {
+      img: "/src/assets/img/Mask-Group.png",
+      name: fullName,
+      position: role === "admin" ? "Bộ Phận Quản Lý" : "Bộ Phận Phục Vụ"
+    }
+  ];
+
   return (
     <div className="flex">
-      <div>
-        <Sidebar />
-      </div>
+      <Sidebar />
+      <div className="flex-1 ml-10">
+          <Header headerData={headData} onClickLogout={logOutBtn} />
 
-      <div className="flex-1">
-        <div className="flex justify-end">
-          <Header onClickLogout={logOutBtn} />
-        </div>  
-      </div>
+        </div>
     </div>
   )
 }

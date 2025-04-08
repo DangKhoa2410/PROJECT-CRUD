@@ -73,6 +73,18 @@ const AdminPage = () => {
   const logOutBtn = () => {
     navigate('/')
   }
+
+  const fullName = localStorage.getItem("fullName") || "";
+  const role = localStorage.getItem("role");
+  
+  const headData = [
+    {
+      img: "/src/assets/img/Mask-Group.png",
+      name: fullName,
+      position: role === "admin" ? "Bộ Phận Quản Lý" : "Bộ Phận Phục Vụ"
+    }
+  ];
+
   const dataList = { nameUser, email, phone, date }
   return (
     <div className="flex">
@@ -82,7 +94,7 @@ const AdminPage = () => {
 
       <div className="flex-1">
         <div className="flex justify-end">
-          <Header isShow onClickLogout={logOutBtn}/>
+          <Header headerData={headData} isShow onClickLogout={logOutBtn}/>
         </div>
 
         <div className="bg-gray-white mt-5 px-10">

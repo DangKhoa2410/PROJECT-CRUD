@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import Form from "../../components/Form";
 import { IRegisForm } from "../../interfaces/form";
-import { useNavigate } from 'react-router-dom';
 import { postData } from "../../script/services/authApi";
 import { useState } from "react";
 const RegisForm = () => {
@@ -10,14 +10,14 @@ const RegisForm = () => {
   const [error, setError] = useState('')
   const handleRegister = async (data: IRegisForm) => {
     try {
-      const newUser = { ...data, role: "user" }; 
-      await postData(`/register`, newUser);
+      const newUser = { ...data, role: "user" };
+      await postData(`/users/register`, newUser);
       navigate('/');
     } catch (e) {
       setError((e as Error).message);
     }
   };
-
+  
   const registerFields = ['firstName', 'lastName', 'email', 'password'];
 
   return (

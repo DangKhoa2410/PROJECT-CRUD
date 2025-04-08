@@ -10,19 +10,31 @@ const LoginForm = () => {
 
   const handleLogin = async (data: ILoginForm) => {
     try {
-      const response = await postData(`/login`, data); 
-      const { accessToken, user } = response; 
-  
-      if (accessToken) {
-        localStorage.setItem("token", accessToken); 
-        localStorage.setItem("role", user.role); 
-        navigate(user.role === "admin" ? "/admin" : "/HomePage"); 
+      const response = await postData(`/users/login`, data);
+      console.log("Response from server:", response);
+
+      if (!response || typeof response !== "object") {
+        throw new Error("No response or invalid format");
       }
+
+      const { accessToken, fullName, role, email } = response;
+
+      if (!accessToken || !fullName || !role) {
+        throw new Error("Invalid response format");
+      }
+
+      // 👉 Lưu vào localStorage
+      localStorage.setItem("token", accessToken);
+      localStorage.setItem("role", role);
+      localStorage.setItem("fullName", fullName);
+      localStorage.setItem("email", email);
+
+      navigate(role === "admin" ? "/admin" : "/HomePage");
     } catch (e) {
+      console.error("Login error:", e);
       setError("Invalid email or password");
     }
   };
-  
   
   const loginFields = ["email", "password"];
 
