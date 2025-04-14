@@ -24,7 +24,7 @@ const RegisForm = () => {
     <div className="bg-custom-gradient flex items-center justify-center h-screen">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl ">
         <h2 className="text-2xl font-bold text-center text-black uppercase">
-          <span className="text-yellow">|</span> crud operations
+          <span className="text-yellow">|</span> HRM Ipos
         </h2>
 
         <div className="my-11">

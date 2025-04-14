@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import BoxDays from "../../components/BoxDay";
 import Cards from "../../components/Cards";
 import { useState, useEffect } from "react";
-import { toggleShiftAPI, getAllRegisteredShiftsAPI } from "../../script/services/api";
+import { toggleShiftAPI, getRegisteredShiftsByDateAPI } from "../../script/services/api";
 import { getCurrentVietnameseWeek } from "../../utils/date"
 
 interface ShiftRegister {
@@ -13,7 +13,6 @@ interface ShiftRegister {
   shift: "ca-toi" | "ca-chieu";
 }
 
-
 const RegisterSchedulePage = () => {
   const navigate = useNavigate();
   const userInfo = {
@@ -21,11 +20,11 @@ const RegisterSchedulePage = () => {
     role: localStorage.getItem("role") || "",
     email: localStorage.getItem("email") || "",
   };
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [registeredNamesCaToi, setRegisteredNamesCaToi] = useState<string[]>([]);
   const [registeredNamesCaChieu, setRegisteredNamesCaChieu] = useState<string[]>([]);
-
   const headData = [
     {
       img: "/src/assets/img/Mask-Group.png",
@@ -36,12 +35,13 @@ const RegisterSchedulePage = () => {
 
 
   const dayData = getCurrentVietnameseWeek();
+  const [selectedDate, setSelectedDate] = useState(dayData[0].date);
 
 
-  const fetchAndSetRegisteredShifts = async () => {
+  const fetchAndSetRegisteredShifts = async (date: string) => {
     setLoading(true);
     try {
-      const res = await getAllRegisteredShiftsAPI();
+      const res = await getRegisteredShiftsByDateAPI(date);
       const data: ShiftRegister[] = res.data;
 
       const caToi: string[] = [];
@@ -65,15 +65,18 @@ const RegisterSchedulePage = () => {
 
 
   useEffect(() => {
-    fetchAndSetRegisteredShifts();
-  }, []);
+    fetchAndSetRegisteredShifts(selectedDate);
+  }, [selectedDate]);
 
   const toggleShift = async (shift: string) => {
     try {
-      const res = await toggleShiftAPI({ email: userInfo.email, shift });
-
+      const res = await toggleShiftAPI({
+        email: userInfo.email,
+        shift,
+        date: selectedDate,
+      });
       if (res.data?.status) {
-        fetchAndSetRegisteredShifts();
+        fetchAndSetRegisteredShifts(selectedDate);
       }
     } catch (err) {
       console.error("Lỗi khi toggle shift:", err);
@@ -85,7 +88,11 @@ const RegisterSchedulePage = () => {
       <Sidebar />
       <div className="flex-1 ml-10">
         <Header headerData={headData} onClickLogout={() => navigate('/')} />
-        <BoxDays boxItems={dayData} />
+        <BoxDays
+          boxItems={dayData}
+          onSelectDate={(date) => setSelectedDate(date)}
+          selectedDate={selectedDate}
+        />
         <div className="flex">
           <Cards
             registeredNames={registeredNamesCaToi}
@@ -98,9 +105,9 @@ const RegisterSchedulePage = () => {
             registeredNames={registeredNamesCaChieu}
             onRegister={() => toggleShift("ca-chieu")}
             isRegistered={registeredNamesCaChieu.includes(userInfo.fullName)}
-            />
-            {error && <p className="text-red text-center mt-4">{error}</p>}
-            {loading && <p className="text-center mt-4">Đang tải dữ liệu...</p>}
+          />
+          {error && <p className="text-red text-center mt-4">{error}</p>}
+          {loading && <p className="text-center mt-4">Đang tải dữ liệu...</p>}
         </div>
       </div>
     </div>

@@ -23,7 +23,6 @@ const LoginForm = () => {
         throw new Error("Invalid response format");
       }
 
-      // 👉 Lưu vào localStorage
       localStorage.setItem("token", accessToken);
       localStorage.setItem("role", role);
       localStorage.setItem("fullName", fullName);
@@ -42,7 +41,7 @@ const LoginForm = () => {
     <div className="bg-custom-gradient flex items-center justify-center h-screen">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl ">
         <h2 className="text-2xl font-bold text-center text-black uppercase">
-          <span className="text-yellow">|</span> CRUD Operations
+          <span className="text-yellow">|</span> HRM Ipos
         </h2>
 
         <div className="my-11">
