@@ -1,20 +1,17 @@
-import { format, addDays, startOfWeek, isSameDay } from "date-fns";
-
-export const getCurrentVietnameseWeek = () => {
+export function getCurrentVietnameseWeek() {
   const today = new Date();
-  const monday = startOfWeek(today, { weekStartsOn: 1 });
+  const first = today.getDate() - today.getDay() + 1; 
+  const days = [];
 
-  const vietnameseWeekdays: Record<number, string> = {
-    1: "Thứ 2", 2: "Thứ 3", 3: "Thứ 4", 4: "Thứ 5", 5: "Thứ 6", 6: "Thứ 7", 7: "CN"
-  };
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(today.setDate(first + i));
+    const dateStr = d.toISOString().split('T')[0]; 
+    days.push({
+      dayLabel: i === 6 ? 'CN' : `Thứ ${i + 2}`,
+      date: dateStr,
+      displayDate: `${d.getDate()}/${d.getMonth() + 1}`,
+    });
+  }
 
-  return Array.from({ length: 7 }, (_, i) => {
-    const date = addDays(monday, i);
-    const isoDay = parseInt(format(date, "i"));
-    return {
-      dayLabel: vietnameseWeekdays[isoDay],
-      date: format(date, "dd/MM"),
-      isToday: isSameDay(date, today),
-    };
-  });
-};
+  return days;
+}

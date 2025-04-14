@@ -11,7 +11,7 @@ const customAxios = (baseUrl: string) => {
   })
 
   api.interceptors.response.use(
-    (response) => response, // Giữ nguyên khi thành công
+    (response) => response, 
     (error: AxiosError) => {
       if (error.response) {
         const { status } = error.response;
@@ -19,7 +19,7 @@ const customAxios = (baseUrl: string) => {
           throw new Error('Email or password is in valid');
         }
       }
-      return Promise.reject(error); // Ném lỗi khác nếu không phải 400
+      return Promise.reject(error); 
     }
   );
   return api
