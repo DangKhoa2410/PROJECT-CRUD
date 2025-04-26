@@ -63,7 +63,6 @@ const RegisterSchedulePage = () => {
     }
   };
 
-
   useEffect(() => {
     fetchAndSetRegisteredShifts(selectedDate);
   }, [selectedDate]);
@@ -90,8 +89,8 @@ const RegisterSchedulePage = () => {
         <Header headerData={headData} onClickLogout={() => navigate('/')} />
         <BoxDays
           boxItems={dayData}
-          onSelectDate={(date) => setSelectedDate(date)}
           selectedDate={selectedDate}
+          onSelectDate={(date) => setSelectedDate(date)}
         />
         <div className="flex">
           <Cards
