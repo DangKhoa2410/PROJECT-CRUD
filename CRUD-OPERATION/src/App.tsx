@@ -1,5 +1,6 @@
 import './App.css'
 import RegisForm from './pages/regisPage';
+import TaskPage from './pages/taskPage'
 import LoginForm from './pages/loginPage'
 import { Route ,Routes } from "react-router-dom";
 import HomePage from './pages/homePage/index';
@@ -13,8 +14,8 @@ const App = () => {
       <Route path="/Register" element={<RegisForm/>} />
       <Route path="/HomePage" element={<HomePage/>} />
       <Route path="/Register-schedule" element={<RegisterSchedulePage  />} /> 
+      <Route path="/TaskPage" element={<TaskPage/>}/> 
       <Route path="/admin" element={<AdminPage />} /> 
-
     </Routes>
   </> 
   )

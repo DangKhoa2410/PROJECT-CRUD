@@ -12,7 +12,6 @@ export const toggleShiftAPI = (data: { email: string; shift: string; date: strin
   return api.post("/shift-registration/toggle", data);
 };
 
-
 export const getAllRegisteredShiftsAPI = () => {
   return api.get("/shift-registration/all");
 };
@@ -20,4 +19,21 @@ export const getAllRegisteredShiftsAPI = () => {
 export const getRegisteredShiftsByDateAPI = (date: string) => {
   return api.get(`/shift-registration/date/${date}`);
 };
+
+export const approveShiftRegistration = (id: number) => {
+  return api.patch(`/shift-registration/${id}/approve`);
+};
+
+export const deleteShiftRegistration = (id: number) => {
+  return api.delete(`/shift-registration/${id}`);
+};
+
+export const approveAllShiftsByEmail = (email: string) => {
+  return api.patch(`/shift-registration/${encodeURIComponent(email)}/approve-all`);
+};
+
+export const rejectAllShiftsByEmail = (email: string) => {
+  return api.patch(`/shift-registration/${encodeURIComponent(email)}/reject-all`);
+};
+
 

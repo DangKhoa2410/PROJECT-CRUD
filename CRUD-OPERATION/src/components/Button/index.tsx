@@ -1,11 +1,11 @@
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
-  style?: React.CSSProperties;
+  className?: string; 
 }
 
-const Button = ({ text, ...rest }: ButtonProps) => {
+const Button = ({ text, className, ...rest }: ButtonProps) => {
   return (
-    <button {...rest}>{text}</button>
+    <button className={className} {...rest}>{text}</button>
   )
 }
 
