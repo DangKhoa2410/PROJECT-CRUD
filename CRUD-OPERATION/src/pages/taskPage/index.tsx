@@ -98,7 +98,7 @@ const TaskPage = () => {
 
     user.shifts.forEach((item: any) => {
       if (!shiftByDate[item.date]) shiftByDate[item.date] = [];
-      shiftByDate[item.date].push({ id: item.id, shifts: item.shift }); // <-- shift: item.shift (không phải [item.shift])
+      shiftByDate[item.date].push({ id: item.id, shifts: item.shift }); 
     });
 
     const defaultDate = Object.keys(shiftByDate)[0];
