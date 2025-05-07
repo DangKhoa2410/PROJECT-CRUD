@@ -11,6 +11,8 @@
     "server": "json-server-auth src/data/db.json"
   },
   "dependencies": {
+    "@mantine/core": "^8.0.0",
+    "@mantine/hooks": "^8.0.0",
     "axios": "^1.8.4",
     "date-fns": "^4.1.0",
     "express": "^4.21.1",
